@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>My webpage</title>
+
+  <!-- Stylish font import -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html, body {
+      height: 100%;
+      width: 100%;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      background: url('bg1.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      overflow: hidden;
+    }
+
+    #startBtn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s ease-in-out;
+    }
+    #startBtn:hover {
+      transform: scale(1.05);
+    }
+
+
+    #surpriseText {
+      margin-top: 14px;
+      font-size: 18px;
+      color: #f0f4ff;
+      opacity: 0.85;
+    }
+
+    #customText {
+      display: none;
+      font-size: 28px;
+      font-weight: 700;
+      margin-top: 30px;
+      color: #ffffff;
+      text-shadow: 0 3px 12px rgba(0,0,0,0.6);
+    }
+  </style>
+</head>
+<body>
+  <!-- button image -->
+  <button id="startBtn">
+    <img src="Button.png" alt="Start Button" width="180" height="180">
+  </button>
+
+  <div id="surpriseText">Click here to start </div>
+
+  <!-- Custom text appears here after button click -->
+  <div id="customText">
+    <!-- Custom text -->
+    <span>पढले मादरचोद😂</span>
+  </div>
+
+  <!-- 🔊 Audio section (BGM file) -->
+  <audio id="bgm" loop preload="auto">
+    <!-- background music file path -->
+    <source src="Sound.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const startBtn = document.getElementById('startBtn');
+    const surpriseText = document.getElementById('surpriseText');
+    const customText = document.getElementById('customText');
+    const bgm = document.getElementById('bgm');
+
+    // Button click handler
+    startBtn.addEventListener('click', async () => {
+      // Hide button and “click for surprise” text
+      startBtn.style.display = 'none';
+      surpriseText.style.display = 'none';
+      
+      // Show your custom text
+      customText.style.display = 'block';
+
+      // Play background music
+      try {
+        await bgm.play();
+      } catch (err) {
+        console.log('Autoplay prevented — user gesture required', err);
+      }
+    });
+  </script>
+</body>
+</html>
